@@ -34,7 +34,7 @@ publishing {
 	            url = uri("https://maven.pkg.github.com/Raphael-/covid-dataset-loader")
 	            credentials {
 	                username = System.getenv("USERNAME")
-	                password = System.getenv("PACKAGE_TOKEN")
+	                password = System.getenv("TOKEN")
 	            }
 	        }
 	    }
