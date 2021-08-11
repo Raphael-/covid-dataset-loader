@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'war'
+	id 'maven-publish'
 }
 
 group = 'com.example'
@@ -24,4 +25,23 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+publishing {
+   		repositories {
+	        maven {
+	            name = "covid-dataset-loader"
+	            url = uri("https://maven.pkg.github.com/Raphael-/covid-dataset-loader")
+	            credentials {
+	                username = System.getenv("USERNAME")
+	                password = System.getenv("PACKAGE_TOKEN")
+	            }
+	        }
+	    }
+	    publications {
+	        gpr(MavenPublication) {
+	            from(components.java)
+	        }
+	    }
+	}
 }
